@@ -1,0 +1,13 @@
+{
+    "name": "common",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "ts-node src/index.ts",
+        "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts"
+    },
+    "dependencies": {
+        "typeorm": "^0.2.9"
+    }
+}
