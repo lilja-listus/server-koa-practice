@@ -5,9 +5,11 @@
     "license": "MIT",
     "scripts": {
         "start": "ts-node src/index.ts",
-        "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts"
+        "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts",
+        "migrate": "../node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run --config migrations-config"
     },
     "dependencies": {
+        "pg": "^7.7.1",
         "typeorm": "^0.2.9"
     }
 }
