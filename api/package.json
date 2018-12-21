@@ -5,7 +5,8 @@
     "license": "MIT",
     "scripts": {
         "start": "ts-node src/index.ts",
-        "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts"
+        "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts",
+        "test:integration": "mocha --opts ./test/mocha.integration.opts"
     },
     "dependencies": {
         "@koa/cors": "^2.2.3",

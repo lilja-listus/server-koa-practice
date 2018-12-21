@@ -1,0 +1,4 @@
+21.12:
+The integration test on add-user-test. is written but fails. 
+
+TODO: Something needs to be fixed in the integration test. 
