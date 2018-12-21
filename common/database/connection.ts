@@ -15,4 +15,5 @@ export default async function connect<TEntity>(
         connection = await createConnection(config as ConnectionOptions);
     }
 
-    return connection.getRepository<TEntity>(model);
+    return connection.getRepository<TEntity>(model)
+};
