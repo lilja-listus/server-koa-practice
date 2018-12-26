@@ -1,4 +1,6 @@
 21.12:
 The integration test on add-user-test. is written but fails. 
 
-TODO: Something needs to be fixed in the integration test. 
+26.12
+
+unit-test and acceptence test work. Endpoint for 

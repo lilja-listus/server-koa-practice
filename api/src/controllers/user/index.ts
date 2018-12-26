@@ -10,10 +10,9 @@ router.get('/:id', async (ctx: Router.IRouterContext) => {
 
     const userId = ctx.params.id;
 
-    const user = await new UserHandler().getById(userId);
-    // get userId
-
     // call getUserById controller
+    const user = await new UserHandler().getById(userId);
+
     ctx.body = user;
 
 })
