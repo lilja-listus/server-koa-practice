@@ -6,7 +6,8 @@
     "scripts": {
         "start": "ts-node src/index.ts",
         "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts",
-        "test:integration": "mocha --opts ./test/mocha.integration.opts"
+        "test:integration": "mocha --opts ./test/mocha.integration.opts",
+        "test:unit": "mocha --opts ./test/mocha.unit.opts"
     },
     "dependencies": {
         "@koa/cors": "^2.2.3",
@@ -14,7 +15,8 @@
         "axios": "^0.18.0",
         "koa": "^2.6.2",
         "koa-body": "^4.0.4",
-        "koa-router": "^7.4.0"
+        "koa-router": "^7.4.0",
+        "sinon": "^7.2.2"
     },
     "devDependencies": {
         "@types/chai": "^4.1.7",

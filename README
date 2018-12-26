@@ -7,11 +7,15 @@
 Libraries:
 - Mocha
 - TypeORM
+- Koa
 
 /****************************************************************/
 commands:
 
 yarn workspace api test:integration 
+
+to add a library: 
+yarn workspace api add sinon -d 
 
 /****************************************************************/
 /* The structure of a unit-test*/
@@ -31,5 +35,11 @@ describe('User controller unit tests', () => {
         // after remove sandbox
     });
 });
+
+/****************************************************************/
+
+To stub a mehtod when repository exports instance: 
+    methodToStub = sandbox.stub(RepositoryOfTheMethod, 'theMethodToStub');
+    eg: findStub = sandbox.stub(UserRepository, 'findById');
 
 /****************************************************************/

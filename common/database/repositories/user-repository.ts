@@ -5,7 +5,7 @@ import getRepository from '../connection';
 export class UserRepository {
     private repository: Repository<User> = undefined;
 
-    protected async connect(): Promise<void> {
+    private async connect(): Promise<void> {
         if (!this.repository) {
             this.repository = await getRepository<User>(
                 User
