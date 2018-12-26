@@ -8,6 +8,8 @@ import {
 
 let connection: Connection | undefined;
 
+config.entities = [`${__dirname}/models/**.ts`];
+
 export default async function connect<TEntity>(
     model: any
 ): Promise<Repository<TEntity>> {

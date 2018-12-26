@@ -13,9 +13,12 @@ export class UserRepository {
         }
     }
 
-
-    public async findById() {
+    public async findById(id: number): Promise<User | undefined> {
         await this.connect();
+
+        return this.repository.findOne({ id: id });
+        // select * from where id = :id;
+
     }
 }
 export default new UserRepository(); 

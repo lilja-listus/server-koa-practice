@@ -6,6 +6,7 @@
     "scripts": {
         "start": "ts-node src/index.ts",
         "test:acceptance": "mocha --opts ./test/mocha.acceptance.opts",
+        "test:integration": "mocha --opts ./test/mocha.integration.opts",
         "migrate:generate": "../node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate --config migrations-config -n",
         "migrate": "../node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run --config migrations-config",
         "migrate:undo": "../node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert --config migrations-config"

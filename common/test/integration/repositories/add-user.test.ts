@@ -14,7 +14,8 @@ describe('User repository integration with Postgres', () => {
     const firstName = faker.random.word();
     const lastName = faker.random.word();
     const age = faker.random.number();
-    let actualRecord: User;
+
+    let actualRecord;
 
     describe('#findById', () => {
         before(async () => {
@@ -24,12 +25,18 @@ describe('User repository integration with Postgres', () => {
                 age
             });
 
+
             await (UserRepository as any).repository.save(expectedRecord);
 
-            actualRecord = await (UserRepository as any).repository.findById();
+            const id = expectedRecord.id;
+
+
+            actualRecord = await UserRepository.findById(id);
+
         });
+
         after(async () => {
-            //removes entity from DB 
+            // removes entity from DB
             await (UserRepository as any).repository.remove(
                 expectedRecord
             );
