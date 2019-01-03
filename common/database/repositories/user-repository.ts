@@ -20,5 +20,19 @@ export class UserRepository {
         // select * from where id = :id;
 
     }
+    public async createUser(data) {
+        await this.connect();
+        const userRecord = this.repository.create(data);
+        return this.repository.save(userRecord);
+    }
+
+    public async findByEmail(email): Promise<User | undefined> {
+        await this.connect();
+        return this.repository.findOne({ email: email });
+    }
+
+    //findByEmal
+    //integr. test
+
 }
 export default new UserRepository(); 

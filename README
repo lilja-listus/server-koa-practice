@@ -43,3 +43,6 @@ To stub a mehtod when repository exports instance:
     eg: findStub = sandbox.stub(UserRepository, 'findById');
 
 /****************************************************************/
+
+to use the latest version of node: 
+nvm use --lts

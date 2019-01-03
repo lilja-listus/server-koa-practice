@@ -17,4 +17,13 @@ router.get('/:id', async (ctx: Router.IRouterContext) => {
 
 })
 
+router.post('/', async (ctx: Router.IRouterContext) => {
+    const user = ctx.request.body;
+
+    await new UserHandler().create(user);
+
+    ctx.status = 200;
+
+})
+
 export default router; 

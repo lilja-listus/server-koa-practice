@@ -3,6 +3,7 @@ import { User } from 'common/database/models/user-model';
 import * as faker from 'faker';
 
 import { UserRepository } from 'common/database/repositories';
+import userRepository from 'common/database/repositories/user-repository';
 describe('User repository integration with Postgres', () => {
     before(async () => {
         //connect to db
@@ -14,6 +15,7 @@ describe('User repository integration with Postgres', () => {
     const firstName = faker.random.word();
     const lastName = faker.random.word();
     const age = faker.random.number();
+    const email = faker.random.word();
 
     let actualRecord;
 
@@ -22,7 +24,8 @@ describe('User repository integration with Postgres', () => {
             expectedRecord = (UserRepository as any).repository.create({
                 firstName,
                 lastName,
-                age
+                age,
+                email
             });
 
 
@@ -36,7 +39,6 @@ describe('User repository integration with Postgres', () => {
         });
 
         after(async () => {
-            // removes entity from DB
             await (UserRepository as any).repository.remove(
                 expectedRecord
             );
@@ -48,4 +50,59 @@ describe('User repository integration with Postgres', () => {
         });
 
     });
+
+    describe('#createUser', () => {
+        //create user from userRepository 
+        before(async () => {
+            await UserRepository.createUser({ firstName, lastName, age, email });
+
+            actualRecord = await (UserRepository as any).repository.findOne({ email });
+
+        });
+
+        after(async () => {
+            // removes entity from DB
+            await (UserRepository as any).repository.remove(
+                actualRecord
+            );
+        });
+
+        it('should create expected record', () => {
+            assert.strictEqual(actualRecord.firstName, firstName);
+            assert.strictEqual(actualRecord.lastName, lastName);
+            assert.strictEqual(actualRecord.age, age);
+            assert.strictEqual(actualRecord.email, email);
+        })
+    });
+
+    describe.only('#findByEmail', () => {
+
+        before(async () => {
+            expectedRecord = (UserRepository as any).repository.create({
+                firstName,
+                lastName,
+                age,
+                email
+            });
+
+            await (userRepository as any).repository.save(expectedRecord);
+
+            const expectedEmail = expectedRecord.email;
+            actualRecord = await UserRepository.findByEmail(expectedEmail);
+
+        });
+
+        after(async () => {
+            // removes entity from DB
+            await (UserRepository as any).repository.remove(
+                expectedRecord
+            );
+
+        });
+
+        it('should return expected user', () => {
+            assert.deepEqual(expectedRecord, actualRecord);
+        });
+
+    })
 });

@@ -1,5 +1,13 @@
 import { UserRepository } from 'common/database/repositories';
-import { NotFound } from 'api/src/helpers/response-errors';
+import { NotFound, BadRequest } from 'api/src/helpers/response-errors';
+//import { Repository } from 'typeorm';
+
+interface ICreateUser {
+    firstName: string;
+    lastName: string;
+    age: number;
+    email: string;
+}
 
 
 export class UserHandler {
@@ -14,8 +22,20 @@ export class UserHandler {
         return userInfo;
     }
 
+    public async create(userBody: ICreateUser) {
+        const email = userBody.email;
+        const userWithEmail = await UserRepository.findByEmail(email);
 
-    // public async createUser(userBody: object) { }
+        if (userWithEmail) {
+            throw new BadRequest();
+        }
+
+        const createdUser = await UserRepository.createUser(userBody);
+
+        return createdUser;
+
+    }
+
 
     // public async updateUser(userId, userBody) { }
 

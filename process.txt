@@ -4,3 +4,19 @@ The integration test on add-user-test. is written but fails.
 26.12
 
 unit-test and acceptence test work. Endpoint for 
+
+2.01 New year othodnjak. 
+created all kind of tests for post and over that router.post in index.ts. 
+
+
+// 1.acc, test. 
+// - post * it should return 200
+// 2 create user in handker
+// 3. unit test for UserHand
+// 4. integation test.mehtod in Repository. 
+
+3.01 task: 
+    // public async updateUser(userId, userBody) { }
+    // public async deleteUser(userId) { }
+
+    in handler: all the tests 
